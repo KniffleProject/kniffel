@@ -38,6 +38,10 @@ function changeButton(btn){
  function getScore(row){
 		var dices = getDices();
 		var anzahl = 0;
+		var weitermachen = false;
+		if(row.alreadyUsed!="true"){
+			row.alreadyUsed="true";
+		console.log(weitermachen);
 		for(var i=0; i<dices.length;i++){
 			if(dices[i].innerHTML==row.id){
 				anzahl++;
@@ -47,11 +51,13 @@ function changeButton(btn){
 		 if(row.childNodes[i].className=="userScore1" && row.childNodes[i].alreadySet !="bereitsGesetzt"){
 			 row.childNodes[i].innerHTML=anzahl*row.id;
 			 row.childNodes[i].alreadySet="bereitsGesetzt";
+			 
 		 }
 		 
 	 }
 	setSumUser1();
 	newRound(); 
+	}
  }
  
  function setSumUser1(){
@@ -64,9 +70,14 @@ function changeButton(btn){
 	
 		Sum+=parseInt(textScore);
 	}
-	 document.getElementById("User1SumPart1").innerHTML=Sum;
+	if(Sum>63){
+		document.getElementById("User1Bonus").innerHTML="35";
+	}
+	 document.getElementById("User1ZwischensummePart1").innerHTML=Sum;
+	 var Bonus = parseInt(document.getElementById("User1Bonus").innerHTML);
+	 document.getElementById("User1Part1Sum").innerHTML=Sum+Bonus;
  }
- 
+
   
   
 function newRound(){
