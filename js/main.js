@@ -68,14 +68,30 @@ function resetDices(){
 }
 
 function getDices(){
-	var diceArr = new Array();
+	var diceArr = "";
 	var dices = document.getElementsByClassName("demo");
 	for(var i=0; i<dices.length;i++){
-		diceArr[i] = dices[i].innerHTML;
+		diceArr += dices[i].innerHTML;
 	}
 	return diceArr;
 }
 
-function validateRoll(){
-	alert(getDices());
+function validateRoll(row){
+	var dices = getDices();
+	var n = dices.split("3");
+	n = dices.split("3").toString();//alert(n.replace(/,/g ,"").length)
+	if( n.replace(/,/g ,"").length > 3){
+		alert("Dreierpasch nicht Möglich");	
+	}else{
+		document.getElementById("7").innerHTML = sum(dices);
+	}
+	
+}
+
+function sum(diceSum){
+	var sum=0;
+	for(var i=0; i<diceSum.length;i++){
+	sum += parseInt(sum[i]);
+	}
+	return sum;
 }
