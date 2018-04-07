@@ -1,26 +1,33 @@
 var diceRoll = 0;
 
-function getDices() {
+function getDiceFields() {
 	return document.getElementsByClassName("dice");
 }
 
+function getDices(){
+	var diceArr = "";
+	var dices = document.getElementsByClassName("demo");
+	for(var i=0; i<dices.length;i++){
+		diceArr += dices[i].innerHTML;
+	}
+	return diceArr;
+}
 
 function rollDice() {
 	if(diceRoll < 3){
-  	var max = 6;
-    var min = 1;
-	var dices = getDices();
-  	var buttonDiceRoll =  document.getElementById("diceRoll");
-	
-	buttonDiceRoll.innerHTML = "Roll Dice ("+(diceRoll+1)+"/3)";
-	diceRoll++;
-	//alert(diceRoll);
-  	for(var i=0; i<dices.length;i++){
-  	if(dices[i].myVar != "f"){
-      var x = Math.round(Math.random() * (max - min)) + min;
-    dices[i].innerHTML=x;
-    }
-  }  
+		var max = 6;
+		var min = 1;
+		var dices = getDiceFields();
+		var buttonDiceRoll =  document.getElementById("diceRoll");
+		
+		buttonDiceRoll.innerHTML = "Roll Dice ("+(diceRoll+1)+"/3)";
+		diceRoll++;
+		for(var i=0; i<dices.length;i++){
+			if(dices[i].myVar != "f"){
+				var x = Math.round(Math.random() * (max - min)) + min;
+				dices[i].innerHTML=x;
+			}
+		}  
 	}
 }
   
@@ -36,7 +43,7 @@ function changeButton(btn){
 
  
  function getScore(row){
-		var dices = getDices();
+		var dices = getDiceFields();
 		var anzahl = 0;
 		var weitermachen = false;
 		if(row.alreadyUsed!="true"){
@@ -88,21 +95,12 @@ function newRound(){
 }
 
 function resetDices(){
-	var dices = getDices();
+	var dices = getDiceFields();
 	for(var i=0; i<dices.length;i++){
 		dices[i].style.backgroundColor="gray";
 		dices[i].innerHTML="D";
 		dices[i].myVar = "egal";
 	}
-}
-
-function getDices(){
-	var diceArr = "";
-	var dices = document.getElementsByClassName("demo");
-	for(var i=0; i<dices.length;i++){
-		diceArr += dices[i].innerHTML;
-	}
-	return diceArr;
 }
 
 function validateRoll(row){
