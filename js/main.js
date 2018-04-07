@@ -45,3 +45,16 @@ function resetDices(){
 		dices[i].myVar = "egal";
 	}
 }
+
+function getDices(){
+	var diceArr = new Array();
+	var dices = document.getElementsByClassName("demo");
+	for(var i=0; i<dices.length;i++){
+		diceArr[i] = dices[i].innerHTML;
+	}
+	return diceArr;
+}
+
+function validateRoll(){
+	alert(getDices());
+}
