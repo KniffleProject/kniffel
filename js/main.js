@@ -5,7 +5,7 @@ function rollDice() {
 	if(diceRoll < 3){
   	var max = 6;
     var min = 1;
-  	var dices = document.getElementsByClassName("demo");
+  	var dices = document.getElementsByClassName("dice");
   	var buttonDiceRoll =  document.getElementById("diceRoll");
 	
 	buttonDiceRoll.innerHTML = "Roll Dice ("+(diceRoll+1)+"/3)";
@@ -38,7 +38,7 @@ function newRound(){
 }
 
 function resetDices(){
-	var dices = document.getElementsByClassName("demo");
+	var dices = document.getElementsByClassName("dice");
 	for(var i=0; i<dices.length;i++){
 		dices[i].style.backgroundColor="gray";
 		dices[i].innerHTML="D";
