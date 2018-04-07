@@ -109,6 +109,7 @@ function resetDices(){
 		dices[i].style.backgroundColor="gray";
 		dices[i].innerHTML="";
 		dices[i].myVar = "egal";
+		dices[i].score = 0;
 		dices[i].style.backgroundColor="#CCCCCC";
 	}
 }
