@@ -29,6 +29,27 @@ function changeButton(btn){
 		btn.style.backgroundColor="gray";
 	};
 }
+
+ 
+ function getScore(row){
+		var dices = document.getElementsByClassName("demo");
+		var anzahl = 0;
+		for(var i=0; i<dices.length;i++){
+			if(dices[i].innerHTML==row.id){
+				anzahl++;
+			}
+		}
+	 for(var i=0;i<row.childNodes.length;i++){
+		 if(row.childNodes[i].className=="userScore1" && row.childNodes[i].alreadySet !="bereitsGesetzt"){
+			 row.childNodes[i].innerHTML=anzahl*row.id;
+			 row.childNodes[i].alreadySet="bereitsGesetzt";
+		 }
+		 
+	 }
+	newRound(); 
+ }
+ 
+  
   
 function newRound(){
 	var buttonDiceRoll =  document.getElementById("diceRoll");
