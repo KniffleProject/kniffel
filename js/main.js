@@ -46,7 +46,21 @@ function changeButton(btn){
 		 }
 		 
 	 }
+	setSumUser1();
 	newRound(); 
+ }
+ 
+ function setSumUser1(){
+	 var scores = document.getElementsByClassName("userScore1");
+	 var Sum = 0;
+	for(var i=0; i<scores.length;i++){
+		var textScore= scores[i].innerHTML;
+		console.log(textScore);
+		if(textScore == "")textScore=0;
+	
+		Sum+=parseInt(textScore);
+	}
+	 document.getElementById("User1SumPart1").innerHTML=Sum;
  }
  
   
