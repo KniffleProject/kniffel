@@ -6,9 +6,9 @@ function getDiceFields() {
 
 function getDices(){
 	var diceArr = "";
-	var dices = document.getElementsByClassName("demo");
+	var dices = document.getElementsByClassName("dice");
 	for(var i=0; i<dices.length;i++){
-		diceArr += dices[i].innerHTML;
+		diceArr += dices[i].score;
 	}
 	return diceArr;
 }
@@ -23,9 +23,11 @@ function rollDice() {
 		buttonDiceRoll.innerHTML = "Roll Dice ("+(diceRoll+1)+"/3)";
 		diceRoll++;
 		for(var i=0; i<dices.length;i++){
+			dices[i].style.backgroundColor="transparent";
 			if(dices[i].myVar != "f"){
-				var x = Math.round(Math.random() * (max - min)) + min;
-				dices[i].innerHTML=x;
+				var diceScore = Math.round(Math.random() * (max - min)) + min;
+				dices[i].innerHTML='<img src="./img/dice' + diceScore + '.png" alt="' + diceScore + '" title="' + diceScore + '">';
+				dices[i].score = diceScore;
 			}
 		}  
 	}
@@ -49,7 +51,7 @@ function changeButton(btn){
 		if(row.alreadyUsed!="true"){
 			row.alreadyUsed="true";
 		for(var i=0; i<dices.length;i++){
-			if(dices[i].innerHTML==row.id){
+			if(dices[i].score==row.id){
 				anzahl++;
 			}
 		}
@@ -105,8 +107,9 @@ function resetDices(){
 	var dices = getDiceFields();
 	for(var i=0; i<dices.length;i++){
 		dices[i].style.backgroundColor="gray";
-		dices[i].innerHTML="D";
+		dices[i].innerHTML="";
 		dices[i].myVar = "egal";
+		dices[i].style.backgroundColor="#CCCCCC";
 	}
 }
 
