@@ -50,41 +50,48 @@ function changeButton(btn){
 		var weitermachen = false;
 		if(row.alreadyUsed!="true"){
 			row.alreadyUsed="true";
-		console.log(weitermachen);
 		for(var i=0; i<dices.length;i++){
 			if(dices[i].score==row.id){
 				anzahl++;
 			}
 		}
 	 for(var i=0;i<row.childNodes.length;i++){
-		 if(row.childNodes[i].className=="userScore1" && row.childNodes[i].alreadySet !="bereitsGesetzt"){
+		 if(row.childNodes[i].className=="userScore1P1" && row.childNodes[i].alreadySet !="bereitsGesetzt"){
 			 row.childNodes[i].innerHTML=anzahl*row.id;
 			 row.childNodes[i].alreadySet="bereitsGesetzt";
 			 
 		 }
 		 
 	 }
-	setSumUser1();
+	setAllSums();
 	newRound(); 
 	}
  }
  
- function setSumUser1(){
-	 var scores = document.getElementsByClassName("userScore1");
+ function setAllSums(){
+	 var U1P1Sum = getSumUser1("userScore1P1");
+	 var U1P2Sum = getSumUser1("userScore1P2");
+	 document.getElementById("User1ZwischensummePart1").innerHTML=U1P1Sum;
+	 if(U1P1Sum>63){
+		 document.getElementById("User1Bonus").innerHTML="35";
+		 
+	 }
+	 var Bonus = parseInt(document.getElementById("User1Bonus").innerHTML);
+	 document.getElementById("User1Part1Sum").innerHTML=U1P1Sum+Bonus;
+	 document.getElementById("User1Part2Sum").innerHTML=U1P2Sum;
+	 document.getElementById("User1WholeSum").innerHTML=U1P1Sum+U1P2Sum;
+ }
+ 
+ 
+ function getSumUser1(ScoreClass){
+	 var scores = document.getElementsByClassName(ScoreClass);
 	 var Sum = 0;
 	for(var i=0; i<scores.length;i++){
 		var textScore= scores[i].innerHTML;
-		console.log(textScore);
 		if(textScore == "")textScore=0;
-	
 		Sum+=parseInt(textScore);
 	}
-	if(Sum>63){
-		document.getElementById("User1Bonus").innerHTML="35";
-	}
-	 document.getElementById("User1ZwischensummePart1").innerHTML=Sum;
-	 var Bonus = parseInt(document.getElementById("User1Bonus").innerHTML);
-	 document.getElementById("User1Part1Sum").innerHTML=Sum+Bonus;
+	return Sum;
  }
 
   
