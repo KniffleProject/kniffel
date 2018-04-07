@@ -79,7 +79,7 @@ function changeButton(btn){
 	 var Bonus = parseInt(document.getElementById("User1Bonus").innerHTML);
 	 document.getElementById("User1Part1Sum").innerHTML=U1P1Sum+Bonus;
 	 document.getElementById("User1Part2Sum").innerHTML=U1P2Sum;
-	 document.getElementById("User1WholeSum").innerHTML=U1P1Sum+U1P2Sum;
+	 document.getElementById("User1WholeSum").innerHTML=U1P1Sum+U1P2Sum+Bonus;
  }
  
  
