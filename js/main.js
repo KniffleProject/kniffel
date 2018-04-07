@@ -46,7 +46,7 @@ function changeButton(btn){
 		 }
 		 
 	 }
-	 
+	newRound(); 
  }
  
   
