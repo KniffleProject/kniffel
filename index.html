@@ -62,19 +62,19 @@
 				<tr>
 					<td>Zwischensumme</td>
 					<td></td>
-					<td></td>
+					<td id="User1ZwischensummePart1"></td>
 					<td></td>
 				</tr>
 				<tr>
 					<td>Bonus bei 63 oder mehr</td>
 					<td>+35 Punkte</td>
-					<td></td>
-					<td></td>
+					<td id="User1Bonus">0</td>
+					<td>0</td>
 				</tr>
 				<tr>
 					<td>Summe Teil 1</td>
 					<td></td>
-					<td></td>
+					<td id="User1Part1Sum"></td>
 					<td></td>
 				</tr>
 				<tr>
@@ -143,20 +143,26 @@
 			</table>
 		</div>
 		<div class="right">
-			Rechts
-			    <div onclick="changeButton(this)" id="dice1" class="demo">D</div>
+			    <div onclick="changeButton(this)" id="dice1" class="dice">D</div>
 				<br/>
-				<div onclick="changeButton(this)" id="dice2" class="demo">D</div>
+				<div onclick="changeButton(this)" id="dice2" class="dice">D</div>
 				<br/>
-				<div onclick="changeButton(this)" id="dice3" class="demo">D</div>
+				<div onclick="changeButton(this)" id="dice3" class="dice">D</div>
 				<br/>
-				<div onclick="changeButton(this)" id="dice4" class="demo">D</div>
+				<div onclick="changeButton(this)" id="dice4" class="dice">D</div>
 				<br/>
-				<div onclick="changeButton(this)" id="dice5" class="demo">D</div>
+				<div onclick="changeButton(this)" id="dice5" class="dice">D</div>
 				
+<<<<<<< HEAD
 				<button id ="diceRoll" onclick="rollDice()">Roll Dice!</button>
 				<button onclick="newRound()">New Round!</button>
 				<button onclick="validateRoll()">Test</button>
+=======
+				<div class="buttons">
+					<button class="btn btn-light" id ="diceRoll" onclick="rollDice()">Roll Dice!</button>
+					<button class="btn btn-warning" onclick="newRound()">New Round!</button>
+				</div>
+>>>>>>> bfe0f4344dc09fb5de9639f319d25cc8f40732f2
 		</div>
 	</div>
 	

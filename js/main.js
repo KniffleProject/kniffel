@@ -1,11 +1,15 @@
 var diceRoll = 0;
 
+function getDices() {
+	return document.getElementsByClassName("dice");
+}
+
 
 function rollDice() {
 	if(diceRoll < 3){
   	var max = 6;
     var min = 1;
-  	var dices = document.getElementsByClassName("demo");
+	var dices = getDices();
   	var buttonDiceRoll =  document.getElementById("diceRoll");
 	
 	buttonDiceRoll.innerHTML = "Roll Dice ("+(diceRoll+1)+"/3)";
@@ -32,8 +36,12 @@ function changeButton(btn){
 
  
  function getScore(row){
-		var dices = document.getElementsByClassName("demo");
+		var dices = getDices();
 		var anzahl = 0;
+		var weitermachen = false;
+		if(row.alreadyUsed!="true"){
+			row.alreadyUsed="true";
+		console.log(weitermachen);
 		for(var i=0; i<dices.length;i++){
 			if(dices[i].innerHTML==row.id){
 				anzahl++;
@@ -43,12 +51,33 @@ function changeButton(btn){
 		 if(row.childNodes[i].className=="userScore1" && row.childNodes[i].alreadySet !="bereitsGesetzt"){
 			 row.childNodes[i].innerHTML=anzahl*row.id;
 			 row.childNodes[i].alreadySet="bereitsGesetzt";
+			 
 		 }
 		 
 	 }
+	setSumUser1();
 	newRound(); 
+	}
  }
  
+ function setSumUser1(){
+	 var scores = document.getElementsByClassName("userScore1");
+	 var Sum = 0;
+	for(var i=0; i<scores.length;i++){
+		var textScore= scores[i].innerHTML;
+		console.log(textScore);
+		if(textScore == "")textScore=0;
+	
+		Sum+=parseInt(textScore);
+	}
+	if(Sum>63){
+		document.getElementById("User1Bonus").innerHTML="35";
+	}
+	 document.getElementById("User1ZwischensummePart1").innerHTML=Sum;
+	 var Bonus = parseInt(document.getElementById("User1Bonus").innerHTML);
+	 document.getElementById("User1Part1Sum").innerHTML=Sum+Bonus;
+ }
+
   
   
 function newRound(){
@@ -59,7 +88,7 @@ function newRound(){
 }
 
 function resetDices(){
-	var dices = document.getElementsByClassName("demo");
+	var dices = getDices();
 	for(var i=0; i<dices.length;i++){
 		dices[i].style.backgroundColor="gray";
 		dices[i].innerHTML="D";
