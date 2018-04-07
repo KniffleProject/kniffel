@@ -4,6 +4,18 @@ function getDiceFields() {
 	return document.getElementsByClassName("dice");
 }
 
+function getDiceImgHtml(diceScore, locked) {
+	var lockedString = '';
+	if (locked) {
+		lockedString = '_locked';
+	}
+	return '<img src="./img/dice' + diceScore + lockedString + '.png" alt="' + diceScore + '" title="' + diceScore + '">';
+}
+
+function isLocked(diceElement) {
+	return diceElement.myVar == 'f';
+}
+
 function getDices(){
 	var diceArr = "";
 	var dices = document.getElementsByClassName("dice");
@@ -26,20 +38,20 @@ function rollDice() {
 			dices[i].style.backgroundColor="transparent";
 			if(dices[i].myVar != "f"){
 				var diceScore = Math.round(Math.random() * (max - min)) + min;
-				dices[i].innerHTML='<img src="./img/dice' + diceScore + '.png" alt="' + diceScore + '" title="' + diceScore + '">';
+				dices[i].innerHTML=getDiceImgHtml(diceScore, isLocked(dices[i]));
 				dices[i].score = diceScore;
 			}
 		}  
 	}
 }
   
-function changeButton(btn){
-	if(btn.myVar != "f"){
-		btn.myVar ="f";
-		btn.style.backgroundColor="#FFFFFF";
+function lockDice(div){
+	if(div.myVar != "f"){
+		div.myVar ="f";
+		div.innerHTML = getDiceImgHtml(div.score, true);
 	} else {
-		btn.myVar = "egal";
-		btn.style.backgroundColor="gray";
+		div.myVar = "egal";
+		div.innerHTML = getDiceImgHtml(div.score, false);
 	};
 }
 
