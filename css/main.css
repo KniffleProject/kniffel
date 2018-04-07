@@ -1,0 +1,29 @@
+body {
+	font-family: "Helvetica Neue", Helvetica, sans-serif;
+	background-color:light-gray;
+}
+.main {
+	margin-top:40px;
+	width:900px;
+	height:600px;
+	margin-left: auto;
+	margin-right: auto;
+	background-color:#004400;
+	color:white;
+}
+.left {
+	float:left;
+	width:50%;
+	border-right:1px solid white;
+	height:100%;
+}
+.left {
+	float:left;
+	width:50%;
+	height:100%;
+}
+
+.scoreboard td {
+	border:1px solid white;
+	
+}
