@@ -1,11 +1,15 @@
 var diceRoll = 0;
 
+function getDices() {
+	return document.getElementsByClassName("dice");
+}
+
 
 function rollDice() {
 	if(diceRoll < 3){
   	var max = 6;
     var min = 1;
-  	var dices = document.getElementsByClassName("dice");
+	var dices = getDices();
   	var buttonDiceRoll =  document.getElementById("diceRoll");
 	
 	buttonDiceRoll.innerHTML = "Roll Dice ("+(diceRoll+1)+"/3)";
@@ -32,7 +36,7 @@ function changeButton(btn){
 
  
  function getScore(row){
-		var dices = document.getElementsByClassName("demo");
+		var dices = getDices();
 		var anzahl = 0;
 		for(var i=0; i<dices.length;i++){
 			if(dices[i].innerHTML==row.id){
@@ -59,7 +63,7 @@ function newRound(){
 }
 
 function resetDices(){
-	var dices = document.getElementsByClassName("dice");
+	var dices = getDices();
 	for(var i=0; i<dices.length;i++){
 		dices[i].style.backgroundColor="gray";
 		dices[i].innerHTML="D";
